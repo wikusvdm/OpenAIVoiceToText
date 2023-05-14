@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Record Audio</title>
+</head>
+<body>
+    <button id="start">Start Recording</button>
+    <button id="stop" disabled>Stop Recording</button>
+    <div id="transcript"></div> <!-- Element for displaying the transcript -->
+    <div id="response"></div> <!-- Element for displaying the OpenAI response -->
+
+    <script>
+    let startButton = document.getElementById('start');
+    let stopButton = document.getElementById('stop');
+    let transcriptDiv = document.getElementById('transcript');
+    let responseDiv = document.getElementById('response');
+
+    let mediaRecorder;
+    let audioChunks = [];
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        console.log('getUserMedia supported.');
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            mediaRecorder = new MediaRecorder(stream);
+
+            startButton.addEventListener('click', function() {
+                audioChunks = [];
+                mediaRecorder.start();
+                stopButton.disabled = false;
+                startButton.disabled = true;
+            });
+
+            stopButton.addEventListener('click', function() {
+                mediaRecorder.stop();
+                stopButton.disabled = true;
+                startButton.disabled = false;
+            });
+
+            mediaRecorder.ondataavailable = function(e) {
+                audioChunks.push(e.data);
+            }
+
+            mediaRecorder.onstop = function() {
+                const audioBlob = new Blob(audioChunks);
+                const formData = new FormData();
+                formData.append('audio', audioBlob, 'audio.wav');
+
+                fetch('/speech-to-text', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    transcriptDiv.innerText = data.transcript;
+                    responseDiv.innerText = data.response;
+                })
+                .catch(console.error);
+            }
+        })
+        .catch(err => console.log('The following getUserMedia error occurred: ' + err));
+    } else {
+        console.log('getUserMedia not supported on your browser!');
+    }
+    </script>
+</body
+
+
