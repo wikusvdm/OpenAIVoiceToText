@@ -1,5 +1,16 @@
 # OpenAIVoiceToText
 This takes a prompt from voice, converts it into a string, sends it to openai, then, finally, displays the response from an openai engine. It is a fascinating program that showcases a full stack application that can be used in customer service support scenarios, tailoring AI responses as per a given query.
+
+The problem you faces with openai is that if you don't throttle the text count, OpenAI can give you chunks of text. Here I throttled my word count to 220 words which gives me a decent respnose count.
+
+Now, OpenAi uses a 4097 token limit (might change with time), and this prevent you from sending too lengthy responses because not only is your text part of theses tokesn, but OpenAI uses its response and concatenates your prompt to calculate the complete token limit.
+
+Roughly speaking, a 300 word paragarph can be as much as 400 tokens, each word and character a token, depending on how accurate you want the AI to interpret your text.
+
+The other issue is smart prompting: running a clear code pattern to OpenAI isn't enough; you need to embed prompt engineering principles to save you time. If OpenAi is confused based on the code hits you provide it with, it might, even with clean code, not return what you wish for. The way to get around this promblem, as I've learned, is with savvy prompt engineering, to tell openAI exactly what you want it to do, and tailor the program to tweak the output given by OpenAI.
+
+Here's a rough breakdown:
+
 First, I run app.py from the directory folder. In this case, it's one found in downloads.
 Next, I head over to the port given in the terminal.
 Thereafter, I click on the button to record and go ahead.
