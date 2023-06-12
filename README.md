@@ -1,13 +1,20 @@
 # OpenAIVoiceToText
-This takes a prompt from voice, converts it into a string, sends it to openai, then, finally, displays the response from an openai engine. It is a fascinating program that showcases a full stack application that can be used in customer service support scenarios, tailoring AI responses as per a given query.
 
-The problem you faces with openai is that if you don't throttle the text count, OpenAI can give you chunks of text. Here I throttled my word count to 220 words which gives me a decent respnose count.
+This program takes a spoken prompt, converts it into a string, sends it to OpenAI, and ultimately displays the response from an OpenAI engine. It's a fascinating application that demonstrates a full-stack solution potentially useful in customer service support scenarios, tailoring AI responses to specific queries. 
 
-Now, OpenAi uses a 4097 token limit (might change with time), and this prevent you from sending too lengthy responses because not only is your text part of theses tokesn, but OpenAI uses its response and concatenates your prompt to calculate the complete token limit.
+A challenge that one might encounter with OpenAI is the management of text output. If you don't limit the text count, 
 
-Roughly speaking, a 300 word paragarph can be as much as 400 tokens, each word and character a token, depending on how accurate you want the AI to interpret your text.
+OpenAI can yield large chunks of text. To mitigate this, I've throttled my word count to 220 words, resulting in a reasonably-sized response. OpenAI operates under a 4097 token limit (which could change over time), preventing the submission of overly lengthy responses. 
 
-The other issue is smart prompting: running a clear code pattern to OpenAI isn't enough; you need to embed prompt engineering principles to save you time. If OpenAi is confused based on the code hits you provide it with, it might, even with clean code, not return what you wish for. The way to get around this promblem, as I've learned, is with savvy prompt engineering, to tell openAI exactly what you want it to do, and tailor the program to tweak the output given by OpenAI.
+This is because not only does your prompt contribute to these tokens, but OpenAI also includes its own response when calculating the total token limit. 
+
+Roughly speaking, a 300-word paragraph can amount to as many as 400 tokens, with each word and character counting as a token. 
+
+This depends on how accurately you want the AI to interpret your text. Another challenge lies in smart prompting: simply providing a clear code pattern to OpenAI isn't sufficient; you also need to incorporate principles of prompt engineering to save time.
+
+ If OpenAI gets confused based on the code hints you provide, it may not return the desired output, even if the code is clean. 
+
+One workaround I've discovered is to use savvy prompt engineering, which involves instructing OpenAI explicitly on what you want it to do, and customizing the program to adjust the output given by OpenAI.
 
 Here's a rough breakdown:
 
