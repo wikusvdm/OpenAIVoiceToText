@@ -1,5 +1,5 @@
 # OpenAIVoiceToText
-This takes a prompt from voice, converts it into a string, sends it to openai, then, finally, displays the response from an openai engine. It is a fascinating program that showcase a full stack application that can be used in customer service support scenarios, tailoring AI responses as per a given query.
+This takes a prompt from voice, converts it into a string, sends it to openai, then, finally, displays the response from an openai engine. It is a fascinating program that showcases a full stack application that can be used in customer service support scenarios, tailoring AI responses as per a given query.
 First, I run app.py from the directory folder. In this case, it's one found in downloads.
 Next, I head over to the port given in the terminal.
 Thereafter, I click on the button to record and go ahead.
