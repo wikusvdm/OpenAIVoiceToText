@@ -6,7 +6,7 @@ import openai
 import re
 
 # Load OpenAI API key
-openai.api_key = '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'
+openai.api_key = 
 
 app = Flask(__name__)
 
